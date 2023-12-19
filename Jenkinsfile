@@ -21,7 +21,7 @@ pipeline {
      stage('Build Node JS Docker Image') {
             steps {
                 script {
-                  sh 'docker build -t devopshint/node-app-1.0 .'
+                  sh 'docker build -t sunkual/node-app-1.0 .'
                 }
             }
         }
@@ -30,10 +30,10 @@ pipeline {
         stage('Deploy Docker Image to DockerHub') {
             steps {
                 script {
-                 withCredentials([string(credentialsId: 'devopshintdocker', variable: 'devopshintdocker')]) {
-                    sh 'docker login -u devopshint -p ${devopshintdocker}'
+                 withCredentials([string(credentialsId: 'sunkual', variable: 'sunkual')]) {
+                    sh 'docker login -u sunkual -p ${sunkual}'
             }
-            sh 'docker push devopshint/node-app-1.0'
+            sh 'docker push sunkual/node-app-1.0'
         }
             }   
         }
